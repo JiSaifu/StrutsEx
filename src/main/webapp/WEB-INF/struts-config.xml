@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+    <form-beans>
+        <form-bean name="helloWorldForm"
+                   type="com.yuwxw.saifu.ji.lib.struts.form.HelloWorldForm" />
+        <form-bean name="prjTstForm"
+                   type="com.yuwxw.saifu.ji.lib.struts.form.ProjectTestForm" />
+    </form-beans>
+
+    <action-mappings>
+        <action path="/helloWorld"
+                type="com.yuwxw.saifu.ji.lib.struts.action.HelloWorldAction"
+                name="helloWorldForm"
+                scope="request">
+            <forward name="success" path="/HelloWorld_forward.jsp" />
+        </action>
+        <action path="/prjTest"
+                type="com.yuwxw.saifu.ji.lib.struts.action.ProjectTestAction"
+                name="prjTstForm"
+                parameter="f1"
+                scope="request">
+            <forward name="f1" path="/f1.jsp" />
+        </action>
+        <action path="/prjTest_2"
+                type="com.yuwxw.saifu.ji.lib.struts.action.ProjectTestAction"
+                name="prjTstForm"
+                parameter="f2"
+                scope="request">
+            <forward name="f2" path="/f2.jsp" />
+        </action>
+    </action-mappings>
+
+</struts-config>
