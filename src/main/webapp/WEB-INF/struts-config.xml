@@ -34,5 +34,6 @@
             <forward name="f2" path="/f2.jsp" />
         </action>
     </action-mappings>
-
+    <!-- ここはリソースファイルの名前（拡張子含まない）を設定する -->
+    <message-resources parameter="ApplicationResources" />
 </struts-config>

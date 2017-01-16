@@ -9,6 +9,7 @@ import org.apache.struts.action.ActionMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,6 +45,7 @@ public class HelloWorldAction extends Action{
         SampleBean splBean = new SampleBean();
         splBean.setArrays(new int[]{1,2,3,4,5});
         splBean.setDoubleNum(3.14);
+        splBean.setDate(new Date());
         Map map = new HashMap<String, String>();
         map.put("key1", "value1");
         map.put("key2", "value2");
