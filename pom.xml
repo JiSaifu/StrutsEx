@@ -55,5 +55,11 @@
                 </executions>
             </plugin>
         </plugins>
+        <!-- リソースファイルの設定をしないと、targetに入れないです。 -->
+        <resources>
+            <resource>
+                <directory>src/main/java/com/yuwxw/saifu/ji/lib/struts/resources</directory>
+            </resource>
+        </resources>
     </build>
 </project>

@@ -14,7 +14,7 @@
         request.setAttribute("ptbTree1", map);
     %>
     <logic:iterate id="tree" name="ptbTree" >
-        <html:radio idName="tree" property="radio" value="value" />
+        <html:radio idName="tree" property="radio" value="key" />
         <bean:write name="tree" property="value.col1" />
     </logic:iterate>
     <input type="submit" value="Submit" />
