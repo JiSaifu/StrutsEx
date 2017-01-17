@@ -22,6 +22,11 @@ public class HelloWorldAction extends Action{
                                  HttpServletRequest request, HttpServletResponse response) {
         HelloWorldForm hwForm = (HelloWorldForm)form;
 
+        // frontでcancelボタンが押下されたかどうかを判断する
+        if (isCancelled(request)) {
+            System.out.println("[cancel] button has been clicked.");
+        }
+
         hwForm.setMessage("Hello World! Struts");
 
         System.out.println("For checkbox test : discount is " + hwForm.isDiscount());
