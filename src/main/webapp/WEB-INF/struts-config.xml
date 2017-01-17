@@ -16,7 +16,10 @@
         <action path="/helloWorld"
                 type="com.yuwxw.saifu.ji.lib.struts.action.HelloWorldAction"
                 name="helloWorldForm"
-                scope="request">
+                scope="request"
+                validate="true"
+                cancellable="true"
+                input="/HelloWorld.jsp">
             <forward name="success" path="/HelloWorld_forward.jsp" />
         </action>
         <action path="/prjTest"

@@ -1,7 +1,9 @@
 package com.yuwxw.saifu.ji.lib.struts.form;
 
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -30,6 +32,20 @@ public class HelloWorldForm extends ActionForm {
      */
     public void reset(ActionMapping mapping, HttpServletRequest request) {
         setDiscount(false);
+    }
+
+    public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+        ActionErrors errors = new ActionErrors();
+
+        if ("".equals(this.getTel("home"))) {
+            errors.add("tel_home", new ActionMessage("invalid.tel.home"));
+        }
+
+        if ("".equals(this.getTel("mobile"))) {
+            errors.add("tel_mobile", new ActionMessage("invalid.tel.mobile"));
+        }
+
+        return errors;
     }
 
     public boolean isDiscount() { return discount; }
