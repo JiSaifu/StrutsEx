@@ -10,6 +10,8 @@
                    type="com.yuwxw.saifu.ji.lib.struts.form.HelloWorldForm" />
         <form-bean name="prjTstForm"
                    type="com.yuwxw.saifu.ji.lib.struts.form.ProjectTestForm" />
+        <form-bean name="loginForm"
+                   type="com.yuwxw.saifu.ji.lib.struts.form.LoginForm" />
     </form-beans>
 
     <action-mappings>
@@ -35,6 +37,13 @@
                 parameter="f2"
                 scope="request">
             <forward name="f2" path="/f2.jsp" />
+        </action>
+        <action path="/login"
+                type="com.yuwxw.saifu.ji.lib.struts.action.LoginAction"
+                name="loginForm"
+                scope="request"
+                input="/Login.jsp">
+            <forward name="confirm" path="/confirm.jsp" />
         </action>
     </action-mappings>
     <!-- ここはリソースファイルの名前（拡張子含まない）を設定する -->
