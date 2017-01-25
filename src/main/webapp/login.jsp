@@ -1,7 +1,11 @@
 <%@page contentType="text/html;charset=UTF-8" %>
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 
-<html>
+<%--
+    langがfalseに設定しても、trueに設定しても、HTTPヘッダーからAccept-Languageの値を読み取り、
+    SessionにAttributeのorg.apache.struts.action.LOCALEとして設定する。
+--%>
+<html:html lang="false">
 <head>
     <meta charset="UTF-8">
 </head>
@@ -31,4 +35,4 @@
     <html:reset value="Reset" />
 </html:form>
 </body>
-</html>
+</html:html>

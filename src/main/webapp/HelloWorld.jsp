@@ -9,7 +9,7 @@
 <html:form action="helloWorld.do" method="post">
     <input type="checkbox" name="discount" value="1" />discount<br />
 
-    <html:select  name="helloWorldForm" property="shops" multiple="true">
+    <html:select  name="helloWorldForm" property="shops" size="2" multiple="true">
         <html:option value="Tokyo">Tokyo</html:option>
         <html:option value="Nagoya">Nagoya</html:option>
         <html:option value="Osaka">Osaka</html:option>
