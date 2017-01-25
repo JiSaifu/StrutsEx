@@ -1,7 +1,5 @@
 package com.yuwxw.saifu.ji.lib.struts.action;
 
-import com.yuwxw.saifu.ji.lib.struts.bean.SampleBean;
-import com.yuwxw.saifu.ji.lib.struts.form.HelloWorldForm;
 import com.yuwxw.saifu.ji.lib.struts.form.LoginForm;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -10,9 +8,7 @@ import org.apache.struts.action.ActionMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -22,6 +18,7 @@ public class LoginAction extends Action{
     public ActionForward execute(ActionMapping mapping, ActionForm form,
                                  HttpServletRequest request, HttpServletResponse response) {
         LoginForm loginForm = (LoginForm)form;
+        HttpSession session = request.getSession();
 
         System.out.println(loginForm.getUserid());
         System.out.println(loginForm.getPassword());
@@ -30,6 +27,8 @@ public class LoginAction extends Action{
         System.out.println(loginForm.getSecret());
         System.out.println(loginForm.isAgreeBln());
         System.out.println(loginForm.getAgreeStr());
+
+        System.out.println("Locale: " + session.getAttribute("org.apache.struts.action.LOCALE"));
 
         String[] hobbies = loginForm.getHobbies();
         if (hobbies == null) {
@@ -41,6 +40,8 @@ public class LoginAction extends Action{
             }
         }
 
-        return mapping.findForward("#");
+        session.setAttribute("userid", loginForm.getUserid());
+
+        return mapping.findForward("menu");
     }
 }

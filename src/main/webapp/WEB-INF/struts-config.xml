@@ -12,6 +12,8 @@
                    type="com.yuwxw.saifu.ji.lib.struts.form.ProjectTestForm" />
         <form-bean name="loginForm"
                    type="com.yuwxw.saifu.ji.lib.struts.form.LoginForm" />
+        <form-bean name="menuForm"
+                   type="com.yuwxw.saifu.ji.lib.struts.form.MenuForm" />
     </form-beans>
 
     <action-mappings>
@@ -24,6 +26,7 @@
                 input="/HelloWorld.jsp">
             <forward name="success" path="/HelloWorld_forward.jsp" />
         </action>
+
         <action path="/prjTest"
                 type="com.yuwxw.saifu.ji.lib.struts.action.ProjectTestAction"
                 name="prjTstForm"
@@ -31,6 +34,7 @@
                 scope="request">
             <forward name="f1" path="/f1.jsp" />
         </action>
+
         <action path="/prjTest_2"
                 type="com.yuwxw.saifu.ji.lib.struts.action.ProjectTestAction"
                 name="prjTstForm"
@@ -38,13 +42,31 @@
                 scope="request">
             <forward name="f2" path="/f2.jsp" />
         </action>
+
         <action path="/login"
                 type="com.yuwxw.saifu.ji.lib.struts.action.LoginAction"
                 name="loginForm"
                 scope="request"
                 input="/Login.jsp">
-            <forward name="confirm" path="/confirm.jsp" />
+            <forward name="menu" path="/menuInit.do" />
         </action>
+
+        <action path="/menuInit"
+                type="com.yuwxw.saifu.ji.lib.struts.action.MenuAction"
+                name="menuForm"
+                scope="request"
+                parameter="init">
+            <forward name="menu" path="/menu.jsp" />
+        </action>
+
+        <action path="/menu"
+                type="com.yuwxw.saifu.ji.lib.struts.action.MenuAction"
+                name="menuForm"
+                scope="request"
+                parameter="menu">
+            <forward name="menu" path="/menu.jsp" />
+        </action>
+
     </action-mappings>
     <!-- ここはリソースファイルの名前（拡張子含まない）を設定する -->
     <message-resources parameter="ApplicationResources" />
