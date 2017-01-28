@@ -25,4 +25,8 @@ public class ProjectTestBean {
     public void setCol2(String col2) {
         this.col2 = col2;
     }
+
+    public int getNumber() {
+        return 100;
+    }
 }
