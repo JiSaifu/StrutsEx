@@ -36,12 +36,23 @@ public class ProjectTestAction extends Action {
             ptb2.setCol1("ptb2-1");
             ptb2.setCol2("ptb2-2");
 
+            ProjectTestBean ptb3 = new ProjectTestBean();
+            ptb3.setCol1("ptb3-1");
+            ptb3.setCol2("ptb3-2");
+
+            ProjectTestBean ptb4 = new ProjectTestBean();
+            ptb4.setCol1("ptb4-1");
+            ptb4.setCol2("ptb4-2");
+
             treeMap.put("ptb2", ptb2);
             treeMap.put("ptb1", ptb1);
+            treeMap.put("ptb4", ptb4);
+            treeMap.put("ptb3", ptb3);
 
             ptf.setMessage("hello");
 
             request.getSession().setAttribute("ptbTree", treeMap);
+            request.getSession().setAttribute("compareBean", ptb4);
 
             forwardTarget = "f1";
 
