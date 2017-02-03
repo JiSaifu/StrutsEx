@@ -29,7 +29,6 @@ public class MenuAction extends Action {
         if ("init".equals(mapping.getParameter())) {
             HttpSession session = request.getSession();
             String userid = (String)session.getAttribute("userid");
-            System.out.println(userid);
 
             System.out.println("Locale: " + session.getAttribute("org.apache.struts.action.LOCALE"));
 
