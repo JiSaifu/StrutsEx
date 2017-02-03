@@ -47,7 +47,7 @@
                 type="com.yuwxw.saifu.ji.lib.struts.action.LoginAction"
                 name="loginForm"
                 scope="request"
-                input="/Login.jsp">
+                input="/login.jsp">
             <forward name="menu" path="/menuInit.do" />
         </action>
 

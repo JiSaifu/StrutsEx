@@ -1,5 +1,6 @@
 <%@page contentType="text/html;charset=UTF-8" %>
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 
 <html:html lang="true">
 <head>
@@ -9,6 +10,84 @@
 <html:form action="menu.do" method="post">
     user id:
     <html:text property="userid" size="50" /><br />
+    <%--
+        logic:presentタグに関する説明：
+            http://www.techscore.com/tech/Java/ApacheJakarta/Struts/9-3/
+            クッキー／HTTPヘッダー／リクエスト値／Java Beanのプロパティ値が存在するかどうかの判定を行います。
+            presentタグは存在した場合にボディ部を実行し、notPresentタグは存在しなかった場合に実行します。
+            属性説明：
+                name:       Java Beanをスコープから検索するためのキー。
+                            property属性が省略された場合には、この値で検索されたJava Beanが比較対象となります。
+                property:   比較対象となるJava Beanのプロパティ。
+                scope:      Java Beanが存在するスコープを指定。
+                            指定しなかった場合は、全てのスコープから検索されます。
+                cookie:     比較対象となるクッキーのパラメータ名。
+                parameter:  比較対象となるHTTPリクエストのパラメータ名。
+                header:     比較対象となるHTTPヘッダーのパラメータ名。
+
+                value:      文字列を指定。
+                location:   「start」を指定した場合は、指定した文字列は先頭に表れなければならない。
+                            「end」を指定した場合は、文字列は最後に表れなければならない。
+                            省略した場合は、文字列はどこに現れても構わない。
+                またpresentタグ／notPresentタグは、認証に関する機能も提供しています。
+                user:       認証されたユーザの名前が指定の値であった場合に、ボディ部が実行されます。
+                role:       認証されたユーザが指定のRoleに関連付けられている場合、ボディ部が実行されます。
+                            カンマで区切って、複数のRoleを指定する事も可能です。
+    --%>
+    <logic:present name="userid">
+        useridとの属性は存在する<br />
+        <%--
+            logic:emptyタグに関する説明：
+                http://www.techscore.com/tech/Java/ApacheJakarta/Struts/9-2/
+                emptyタグ／notEmptyタグは、特定のJava BeanまたはJava Beanのプロパティ値が
+                ・null
+                ・空文字列
+                ・要素数0のコレクション
+                であるかどうか判定するタグです。
+                属性説明：
+                    name:       Java Beanをスコープから検索するためのキー。
+                                property属性が省略された場合には、この値で検索されたJava Beanが比較対象となります。
+                    property:   比較対象となるJava Beanのプロパティ。
+                    scope:      Java Beanが存在するスコープを指定。
+                                指定しなかった場合は、全てのスコープから検索されます。
+        --%>
+        <logic:empty name="userid">
+            useridは空です<br />
+        </logic:empty>
+        <logic:notEmpty name="userid">
+            useridは空ではありません<br />
+            <%--
+                logic:matchタグに関する説明：
+                    http://www.techscore.com/tech/Java/ApacheJakarta/Struts/9-1/
+                    クッキー／HTTPヘッダー／HTTPリクエスト値／Java Beanのプロパティ値が指定した文字列を、
+                    含んでいるかどうか判定するタグです。matchタグは含んでいた場合にタグのボディ部を処理し、
+                    notMatchタグは含んでいなかった場合に処理します。
+                    属性説明：
+                        name:       Java Beanをスコープから検索するためのキー。
+                                    property属性が省略された場合には、この値で検索されたJava Beanが比較対象となります。
+                        property:   比較対象となるJava Beanのプロパティ。
+                        scope:      Java Beanが存在するスコープを指定。
+                                    指定しなかった場合は、全てのスコープから検索されます。
+                        cookie:     比較対象となるクッキーのパラメータ名。
+                        parameter:  比較対象となるHTTPリクエストのパラメータ名。
+                        header:     比較対象となるHTTPヘッダーのパラメータ名。
+
+                        value:      文字列を指定。
+                        location:   「start」を指定した場合は、指定した文字列は先頭に表れなければならない。
+                                    「end」を指定した場合は、文字列は最後に表れなければならない。
+                                    省略した場合は、文字列はどこに現れても構わない。
+            --%>
+            <logic:match name="userid" value="maodoudou" location="start">
+                useridの頭はmaodoudouです<br />
+            </logic:match>
+            <logic:match name="userid" value="maodoudou" location="end">
+                useridの末尾はmaodoudouです<br />
+            </logic:match>
+            <logic:match name="userid" value="maodoudou">
+                useridにmaodoudouとの文字列が存在しています<br />
+            </logic:match>
+        </logic:notEmpty>
+    </logic:present>
     Country List：<br />
     <html:select  name="menuForm" property="selCountry" size="3" multiple="true">
         <%--

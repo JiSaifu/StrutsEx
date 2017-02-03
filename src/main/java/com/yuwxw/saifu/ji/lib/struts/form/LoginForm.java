@@ -1,6 +1,11 @@
 package com.yuwxw.saifu.ji.lib.struts.form;
 
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by jisai on 2017/01/18.
@@ -17,6 +22,10 @@ public class LoginForm extends ActionForm {
     private boolean agreeBln;
     private String agreeStr;
     private String[] hobbies;
+
+    {
+        System.out.println(this.getClass().getName() + "Start");
+    }
 
     public String getUserid() {
         return userid;
@@ -67,4 +76,17 @@ public class LoginForm extends ActionForm {
     public String[] getHobbies() { return hobbies; }
 
     public void setHobbies(String[] hobbies) { this.hobbies = hobbies; }
+
+    {
+        System.out.println(this.getClass().getName() + "End");
+    }
+
+    public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+        ActionErrors errors = new ActionErrors();
+
+        if ("".equals(this.getUserid())) {
+            errors.add("userid", new ActionMessage("empty.userid"));
+        }
+        return errors;
+    }
 }
