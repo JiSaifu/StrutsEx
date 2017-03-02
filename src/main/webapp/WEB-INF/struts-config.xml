@@ -6,6 +6,7 @@
 <struts-config>
 
     <form-beans>
+        <!-- phase1(chapter1~chapter9)の関連設定内容: start-->
         <form-bean name="helloWorldForm"
                    type="com.yuwxw.saifu.ji.lib.struts.form.HelloWorldForm" />
         <form-bean name="prjTstForm"
@@ -14,17 +15,23 @@
                    type="com.yuwxw.saifu.ji.lib.struts.form.LoginForm" />
         <form-bean name="menuForm"
                    type="com.yuwxw.saifu.ji.lib.struts.form.MenuForm" />
+        <!-- phase1(chapter1~chapter9)の関連設定内容: end-->
+        <!-- phase2の関連設定内容: start-->
+        <form-bean name="signUpForm"
+                   type="com.yuwxw.saifu.ji.lib.struts.form.SignUpForm" />
+        <!-- phase2の関連設定内容: end-->
     </form-beans>
 
     <action-mappings>
+        <!-- phase1(chapter1~chapter9)の関連設定内容: start-->
         <action path="/helloWorld"
                 type="com.yuwxw.saifu.ji.lib.struts.action.HelloWorldAction"
                 name="helloWorldForm"
                 scope="request"
                 validate="true"
                 cancellable="true"
-                input="/HelloWorld.jsp">
-            <forward name="success" path="/HelloWorld_forward.jsp" />
+                input="/ph1/HelloWorld.jsp">
+            <forward name="success" path="/ph1/HelloWorld_forward.jsp" />
         </action>
 
         <action path="/prjTest"
@@ -32,7 +39,7 @@
                 name="prjTstForm"
                 parameter="f1"
                 scope="request">
-            <forward name="f1" path="/f1.jsp" />
+            <forward name="f1" path="/ph1/f1.jsp" />
         </action>
 
         <action path="/prjTest_2"
@@ -40,15 +47,15 @@
                 name="prjTstForm"
                 parameter="f2"
                 scope="request">
-            <forward name="f2" path="/f2.jsp" />
+            <forward name="f2" path="/ph1/f2.jsp" />
         </action>
 
         <action path="/login"
                 type="com.yuwxw.saifu.ji.lib.struts.action.LoginAction"
                 name="loginForm"
                 scope="request"
-                input="/login.jsp">
-            <forward name="menu" path="/menuInit.do" />
+                input="/ph1/login.jsp">
+            <forward name="menu" path="/ph1/menuInit.do" />
         </action>
 
         <action path="/menuInit"
@@ -56,7 +63,7 @@
                 name="menuForm"
                 scope="request"
                 parameter="init">
-            <forward name="menu" path="/menu.jsp" />
+            <forward name="menu" path="/ph1/menu.jsp" />
         </action>
 
         <action path="/menu"
@@ -64,10 +71,31 @@
                 name="menuForm"
                 scope="request"
                 parameter="menu">
-            <forward name="menu" path="/menu.jsp" />
+            <forward name="menu" path="/ph1/menu.jsp" />
         </action>
+        <!-- phase1(chapter1~chapter9)の関連設定内容: end-->
+
+        <!-- phase2の関連設定内容: start-->
+        <action path="/home"
+                type="com.yuwxw.saifu.ji.lib.struts.action.HomeAction"
+                scope="request">
+            <forward name="success" path="/home.jsp" />
+        </action>
+        <action path="/sign_up_process"
+                type="com.yuwxw.saifu.ji.lib.struts.action.SignUpAction"
+                name="signUpForm"
+                scope="session"
+                input="/sign_up.jsp"
+                parameter="method"
+                cancellable="true">
+            <forward name="confirm" path="/sign_up_confirm.jsp" />
+            <forward name="back" path="/sign_up.jsp" />
+        </action>
+        <!-- phase2の関連設定内容: end-->
 
     </action-mappings>
     <!-- ここはリソースファイルの名前（拡張子含まない）を設定する -->
-    <message-resources parameter="ApplicationResources" />
+    <message-resources parameter="ApplicationResources" key="AppRes" />
+    <message-resources parameter="ErrorMessages" key="ErrMsg" />
+    <message-resources parameter="CommonSettings" />
 </struts-config>
