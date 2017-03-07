@@ -11,5 +11,9 @@
     <html:link page="/sign_up.jsp">
         <html:img src="images/btn_sign_up.png" height="80" width="80" />
     </html:link>
+    &nbsp;
+    <html:link page="/sign_in.jsp">
+            <html:img src="images/btn_signIn.png" height="80" width="80" />
+    </html:link>
 </body>
 </html:html>
