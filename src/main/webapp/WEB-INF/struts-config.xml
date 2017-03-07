@@ -19,6 +19,12 @@
         <!-- phase2の関連設定内容: start-->
         <form-bean name="signUpForm"
                    type="com.yuwxw.saifu.ji.lib.struts.form.SignUpForm" />
+        <!-- 11 DynaActionForm -->
+        <form-bean name="signInForm"
+                   type="com.yuwxw.saifu.ji.lib.struts.form.SignInForm">
+            <form-property name="userId" type="java.lang.String" initial="" />
+            <form-property name="password" type="java.lang.String" initial="" />
+        </form-bean>
         <!-- phase2の関連設定内容: end-->
     </form-beans>
 
@@ -89,7 +95,15 @@
                 parameter="method"
                 cancellable="true">
             <forward name="confirm" path="/sign_up_confirm.jsp" />
-            <forward name="back" path="/sign_up.jsp" />
+            <forward name="back" path="/sign_up.j`sp" />
+        </action>
+        <action path="/sign_in"
+                type="com.yuwxw.saifu.ji.lib.struts.action.SignInAction"
+                name="signInForm"
+                scope="request"
+                input="/sign_in.jsp"
+                parameter="method">
+            <forward name="pass" path="/#" />
         </action>
         <!-- phase2の関連設定内容: end-->
 
