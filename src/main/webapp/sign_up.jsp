@@ -36,6 +36,11 @@
             </td>
         </tr>
         <tr>
+            <td><bean:message key="sign_up.email" bundle="AppRes" /></td>
+            <td><html:text property="email" size="50" maxlength="256" /></td>
+            <td><html:errors property="email" bundle="ErrMsg" /></td>
+        </tr>
+        <tr>
             <td><bean:message key="sign_up.sex" bundle="AppRes" /></td>
             <td>
                 <bean:message key="sign_up.male" bundle="AppRes" />&nbsp;
@@ -68,7 +73,7 @@
         <tr>
             <td><bean:message key="sign_up.self_introduction" bundle="AppRes" /></td>
             <td><html:textarea property="introduction" rows="5" cols="25" /></td>
-            <td />
+            <td><html:errors property="introduction" bundle="ErrMsg" /></td>
         </tr>
         <tr>
             <td><bean:message key="sign_up.hobbies" bundle="AppRes" /></td>
