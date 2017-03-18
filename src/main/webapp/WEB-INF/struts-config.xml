@@ -90,6 +90,7 @@
         <action path="/sign_up_process"
                 type="com.yuwxw.saifu.ji.lib.struts.action.SignUpAction"
                 name="signUpForm"
+                validate="true"
                 scope="session"
                 input="/sign_up.jsp"
                 parameter="method"
@@ -112,4 +113,8 @@
     <message-resources parameter="ApplicationResources" key="AppRes" />
     <message-resources parameter="ErrorMessages" key="ErrMsg" />
     <message-resources parameter="CommonSettings" />
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames"
+                      value="/WEB-INF/validation.xml,/WEB-INF/validator-rules.xml" />
+    </plug-in>
 </struts-config>

@@ -4,9 +4,11 @@ import com.yuwxw.saifu.ji.lib.struts.bean.CountryBean;
 import com.yuwxw.saifu.ji.lib.struts.util.MasterCreator;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts.action.ActionErrors;
-import org.apache.struts.action.ActionForm;
+// import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
+// import org.apache.struts.validator.ValidatorActionForm;
+import org.apache.struts.validator.ValidatorForm;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,23 +16,22 @@ import javax.servlet.http.HttpServletRequest;
  * Created by Ji Saifu on 2017/02/07.
  *
  */
-public class SignUpForm extends ActionForm {
+// 12.2 org.apache.struts.validator.ValidatorForm / ValidatorActionForm
+// public class SignUpForm extends ActionForm {
+// public class SignUpForm extends ValidatorActionForm {
+public class SignUpForm extends ValidatorForm {
 
     private String userId;
     private String password;
     private String confirmPassword;
+    private String email;
     private String introduction;
     private String sex = "M";
     private String age;
     private String[] ageArray;
     private String country;
     private boolean rcvInf;
-
-    private String userType;
-    private String secret;
-    private boolean agreeBln;
-    private String agreeStr;
-    private String[] hobbies;
+    private String hobbies;
 
     public String getUserId() {
         return userId;
@@ -49,6 +50,10 @@ public class SignUpForm extends ActionForm {
     public String getConfirmPassword() { return confirmPassword; }
 
     public void setConfirmPassword(String confirmPassword) { this.confirmPassword = confirmPassword; }
+
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) { this.email = email; }
 
     public String getIntroduction() {
         return introduction;
@@ -76,6 +81,10 @@ public class SignUpForm extends ActionForm {
 
     public String getCountry() { return country; }
 
+    public String getHobbies() { return hobbies; }
+
+    public void setHobbies(String hobbies) { this.hobbies = hobbies; }
+
     /**
      * 国の詳細情報を返す（countryをキーとする）
      * @return 国の詳細情報を格納するBean
@@ -84,34 +93,11 @@ public class SignUpForm extends ActionForm {
 
     public void setCountry(String country) { this.country = country; }
 
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
-
-    public String getSecret() { return secret; }
-
-    public void setSecret(String secret) {
-        this.secret = secret;
-    }
-
-    public boolean isAgreeBln() { return agreeBln; }
-
-    public void setAgreeBln(boolean agreeBln) { this.agreeBln = agreeBln; }
-
-    public String getAgreeStr() { return agreeStr; }
-
-    public void setAgreeStr(String agreeStr) { this.agreeStr = agreeStr; }
-
-    public String[] getHobbies() { return hobbies; }
-
-    public void setHobbies(String[] hobbies) { this.hobbies = hobbies; }
 
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
-        ActionErrors errors = new ActionErrors();
+        // validateメソッドをオーバーライトすると、validation.xmlのチェックが実行されないが
+        // super.validateを実行すると、両方とも実行できる
+        ActionErrors errors = super.validate(mapping, request);
 
         if (StringUtils.isBlank(this.getUserId())) {
             errors.add("userId", new ActionMessage("empty.userId"));
